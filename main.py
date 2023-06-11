@@ -26,8 +26,6 @@ def send_email():
 
 
 HOST = "smtp.gmail.com"
-# https://kb.sandisk.com/app/answers/detail/a_id/17056/~/list-of-mobile-carrier-gateway-addresses
-# https://www.gmass.co/blog/send-text-from-gmail/
 CARRIER_MAP = {
     "verizon": "vtext.com",
     "tmobile": "tmomail.net",
@@ -41,7 +39,12 @@ CARRIER_MAP = {
 
 # pylint: disable=too-many-arguments
 async def send_txt(
-        num: Union[str, int], carrier: str, email: str, pword: str, msg: str, subj: str
+        num: Union[str, int],
+        carrier: str,
+        email: str,
+        pword: str,
+        msg: str,
+        subj: str
 ) -> Tuple[dict, str]:
     to_email = CARRIER_MAP[carrier]
 
@@ -76,8 +79,8 @@ while True:
     iss.display_info()
     if iss.is_visible():
         send_email()
+        send_txt_msg()
         time.sleep(420)
-        print("IN RANGE!")
     else:
         print("Not found, waiting for 1 minute...")
         time.sleep(60)

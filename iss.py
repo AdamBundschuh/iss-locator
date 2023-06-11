@@ -52,3 +52,4 @@ class Iss:
     def display_info(self):
         print(f"Local time: {datetime.utcnow()}")
         print(f"Current ISS Location: {math.floor(self.iss_lat)} | {math.floor(self.iss_lng)}")
+        print("-----------------------------------------")
