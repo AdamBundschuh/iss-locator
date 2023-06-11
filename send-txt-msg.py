@@ -60,12 +60,12 @@ async def send_txts(
 
 
 if __name__ == "__main__":
-    _num = "999999999"
+    _num = "4193410548"
     _carrier = "verizon"
-    _email = "user@gmail.com"
-    _pword = "pword"
-    _msg = "Dummy msg"
-    _subj = "Dummy subj"
+    _email = "bundschuh.adam@gmail.com"
+    _pword = "qbgqoigohtthzftt"
+    _msg = "Message text"
+    _subj = "Subject text"
     coro = send_txt(_num, _carrier, _email, _pword, _msg, _subj)
     # _nums = {"999999999", "000000000"}
     # coro = send_txts(_nums, _carrier, _email, _pword, _msg, _subj)
