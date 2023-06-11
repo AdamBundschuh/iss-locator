@@ -7,8 +7,8 @@ from email.message import EmailMessage
 from typing import Collection, List, Tuple, Union
 import aiosmtplib
 
-MY_EMAIL = "bundschuh.adam@gmail.com"
-PASSWORD = "qbgqoigohtthzftt"
+MY_EMAIL = "xxxxx"
+PASSWORD = "xxxxxx"
 
 iss = Iss()
 
@@ -64,7 +64,7 @@ async def send_txt(
 
 
 def send_txt_msg():
-    _num = "4193410548"
+    _num = "1234567890"
     _carrier = "verizon"
     _email = MY_EMAIL
     _pword = PASSWORD
