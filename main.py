@@ -4,7 +4,7 @@ import smtplib
 import asyncio
 import re
 from email.message import EmailMessage
-from typing import Collection, List, Tuple, Union
+from typing import Tuple, Union
 import aiosmtplib
 
 MY_EMAIL = "xxxxx"
@@ -21,7 +21,7 @@ def send_email():
         connection.sendmail(
             from_addr=MY_EMAIL,
             to_addrs=MY_EMAIL,
-            msg=f"Subject: ISS Is Overhead!\n\nLook up."
+            msg="Subject: ISS Is Overhead!\n\nLook up."
         )
 
 
