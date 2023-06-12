@@ -2,8 +2,8 @@ import requests
 from datetime import datetime
 import math
 
-MY_LAT = 39.962760
-MY_LONG = -82.996290
+MY_LAT = 00.0000
+MY_LONG = 00.0000
 
 
 class Iss:
@@ -50,6 +50,7 @@ class Iss:
         return self.is_nighttime() and self.in_range()
 
     def display_info(self):
-        print(f"Local time: {datetime.utcnow()}")
+        print(f"Current hour: {self.time_now}")
+        print(f"Nighttime between sunset ({self.sunset}) and sunrise ({self.sunrise})")
         print(f"Current ISS Location: {math.floor(self.iss_lat)} | {math.floor(self.iss_lng)}")
         print("-----------------------------------------")

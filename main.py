@@ -1,31 +1,15 @@
 import time
 from iss import Iss
-import smtplib
 import asyncio
 import re
 from email.message import EmailMessage
 from typing import Tuple, Union
 import aiosmtplib
 
-MY_EMAIL = "xxxxx"
-PASSWORD = "xxxxxx"
-
-iss = Iss()
-
-
-def send_email():
-    print("Sending email.")
-    with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
-        connection.starttls()
-        connection.login(user=MY_EMAIL, password=PASSWORD)
-        connection.sendmail(
-            from_addr=MY_EMAIL,
-            to_addrs=MY_EMAIL,
-            msg="Subject: ISS Is Overhead!\n\nLook up."
-        )
-
-
+EMAIL = "xxx@xxxx.com"
+PASSWORD = "xxx"
 HOST = "smtp.gmail.com"
+
 CARRIER_MAP = {
     "verizon": "vtext.com",
     "tmobile": "tmomail.net",
@@ -35,6 +19,21 @@ CARRIER_MAP = {
     "cricket": "sms.cricketwireless.net",
     "uscellular": "email.uscc.net",
 }
+
+iss = Iss()
+
+
+def send_email():
+    print("Sending email.")
+
+    message = EmailMessage()
+    message["From"] = "ISS Notifier"
+    message["To"] = EMAIL
+    message["Subject"] = "Look Up!"
+    message.set_content("The ISS is above you.")
+
+    send_kws = dict(username=EMAIL, password=PASSWORD, hostname=HOST, port=587, start_tls=True)
+    asyncio.run(aiosmtplib.send(message, **send_kws))
 
 
 # pylint: disable=too-many-arguments
@@ -66,10 +65,10 @@ async def send_txt(
 def send_txt_msg():
     _num = "1234567890"
     _carrier = "verizon"
-    _email = MY_EMAIL
+    _email = EMAIL
     _pword = PASSWORD
     _msg = "Look up!"
-    _subj = "ISS In Range"
+    _subj = "The ISS is above you."
     coro = send_txt(_num, _carrier, _email, _pword, _msg, _subj)
     asyncio.run(coro)
 
